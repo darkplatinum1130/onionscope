@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "onionscope"
+dynamic = ["version"]
+description = "Narzędzie OSINT dla clearnetu i sieci Tor — CLI i GUI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "OnionScope contributors" }]
+keywords = ["osint", "tor", "onion", "reconnaissance", "darkweb", "security", "cli", "gui"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Environment :: X11 Applications :: Tk",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Information Technology",
+    "Natural Language :: Polish",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Security",
+]
+dependencies = ["requests[socks]>=2.31"]
+
+[project.scripts]
+onionscope = "onionscope.cli:main"
+
+[project.gui-scripts]
+onionscope-gui = "onionscope.gui:main"
+
+[tool.setuptools]
+packages = ["onionscope", "onionscope.modules"]
+
+[tool.setuptools.dynamic]
+version = { attr = "onionscope.__version__" }
